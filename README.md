@@ -177,7 +177,7 @@ BaseEntity         ← общий родитель (id, createdAt, updatedAt, de
 ## 👤 Автор
 
 **Ваше имя**
-GitLab: [@yourname](https://gitlab.com/user-M72)
+GitLab: [@user-M72](https://gitlab.com/user-M72)
 Project: [Cashflow](https://gitlab.com/user-M72/cashflow)
 
 ---
