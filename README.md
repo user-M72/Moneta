@@ -29,7 +29,7 @@
 | База данных | PostgreSQL 15 |
 | ORM | Spring Data JPA / Hibernate |
 | Валидация | Jakarta Validation |
-| Сборка | Maven |
+| Сборка | Gradle |
 | Контейнеризация | Docker |
 
 ---
