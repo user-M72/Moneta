@@ -6,13 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
-public class User extends BaseDomain<UUID> {
+public class User extends BaseDomain {
 
     private String firstName;
     private String lastName;
