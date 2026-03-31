@@ -2,7 +2,9 @@ package Moneta.cashflow.dto.user;
 
 import Moneta.cashflow.dto.role.RoleResDto;
 
+import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 public record UserReqDto(
 
@@ -11,6 +13,6 @@ public record UserReqDto(
         String username,
         String email,
         String password,
-        Set<RoleResDto> roles
+        List<UUID> roleId
 ) {
 }

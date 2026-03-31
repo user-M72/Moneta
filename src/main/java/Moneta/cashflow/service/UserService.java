@@ -2,13 +2,15 @@ package Moneta.cashflow.service;
 
 import Moneta.cashflow.dto.user.UserReqDto;
 import Moneta.cashflow.dto.user.UserResDto;
-import org.springframework.data.domain.Page;
+import Moneta.cashflow.entity.Role;
 
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 public interface UserService {
 
-    Page<UserResDto> get();
+    List<UserResDto> get();
 
     UserResDto getById(UUID id);
 
