@@ -2,6 +2,7 @@ package Moneta.cashflow.service.impl;
 
 import Moneta.cashflow.dto.role.RoleReqDto;
 import Moneta.cashflow.dto.role.RoleResDto;
+import Moneta.cashflow.entity.Role;
 import Moneta.cashflow.mapper.RoleMapper;
 import Moneta.cashflow.repository.RoleRepository;
 import Moneta.cashflow.service.RoleService;
@@ -20,26 +21,38 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<RoleResDto> get() {
-        return List.of();
+        return repository.findAll()
+                .stream()
+                .map(mapper::toDto)
+                .toList();
     }
 
     @Override
     public RoleResDto getById(UUID id) {
-        return null;
+        Role role = repository.findById(id).orElseThrow(()-> new RuntimeException("Role not found by id: " + id));
+        return mapper.toDto(role);
     }
 
     @Override
     public RoleResDto create(RoleReqDto dto) {
-        return null;
+        Role role = mapper.toEntity(dto);
+        Role save = repository.save(role);
+        return mapper.toDto(save);
     }
 
     @Override
     public RoleResDto update(UUID id, RoleReqDto dto) {
-        return null;
+        Role role = repository.findById(id).orElseThrow(()-> new RuntimeException("Role not found by id: " + id));
+        mapper.updatedFromDto(dto, role);
+        Role save = repository.save(role);
+        return mapper.toDto(save);
     }
 
     @Override
     public void delete(UUID id) {
-
+        if (!repository.existsById(id)){
+            throw new RuntimeException("Role not found by id: " + id);
+        }
+        repository.deleteById(id);
     }
 }
