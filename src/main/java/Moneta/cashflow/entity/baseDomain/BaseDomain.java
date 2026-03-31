@@ -1,9 +1,6 @@
 package Moneta.cashflow.entity.baseDomain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import lombok.Generated;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,6 +8,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -20,11 +18,12 @@ import java.util.UUID;
 @Setter
 @ToString
 @MappedSuperclass
-public abstract class BaseDomain<T extends Serializable> implements Serializable{
+@EntityListeners(AuditingEntityListener.class)
+public abstract class BaseDomain implements Serializable{
 
     @Id
-    @Generated
-    private T id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @CreatedBy
     @Column(name = "created_by", updatable = false)
